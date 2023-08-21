@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <p>Rock Paper Scissors</p>
+    <button onclick="
+    pickComputerMove('Rock');
+    ">Rock</button>
+    <button onclick="
+    const computer2 = Math.ceil(Math.random() * 3);
+    pickComputerMove('Paper');
+    ">Paper</button>
+    <button onclick="
+    pickComputerMove('Scissors');
+    ">Scissors</button>
+    <button onclick="
+      restart()
+    ">Reset</button>
+    <script>
+      let wins = 0;
+      let losses = 0;
+      let ties = 0;
+      function restart(){
+        wins = 0;
+        losses = 0;
+        ties = 0;
+      }
+
+
+      function pickComputerMove(playerMove){
+        const randomNumber = Math.ceil(Math.random() * 3);
+        let computerMove;
+
+        if (randomNumber === 1){
+          computerMove = 'Rock';
+        }else if (randomNumber === 2){
+          computerMove = 'Paper';
+        }else{
+          computerMove = 'Scissors'
+        }
+
+        if (computerMove === playerMove){
+          ties += 1;
+          alert(`You chose ${playerMove}. Computer chose ${computerMove}. It's a tie.`);
+        }else if ((computerMove === 'Rock' && playerMove === 'Scissors') || (computerMove === 'Scissors' && playerMove === 'Paper') || (computerMove === 'Paper' && playerMove === 'Rock')) {
+          losses += 1;
+          alert(`You chose ${playerMove}. Computer chose ${computerMove}. You lose.`);
+        }else{
+          wins += 1;
+          alert(`You chose ${playerMove}. Computer chose ${computerMove}. You win.`)
+        }
+      };
+    </script>
+  </body>
+</html>
